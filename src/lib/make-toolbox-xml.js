@@ -425,7 +425,6 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
 };
 
 const sensing = function (isInitialSetup, isStage, targetId, colors) {
-    const name = translate('SENSING_ASK_TEXT', 'What\'s your name?');
     // Note: the category's secondaryColour matches up with the blocks' tertiary color, both used for border color.
     return `
     <category
@@ -433,17 +432,6 @@ const sensing = function (isInitialSetup, isStage, targetId, colors) {
         id="sensing"
         colour="${colors.primary}"
         secondaryColour="${colors.tertiary}">
-        ${isInitialSetup ? '' : `
-            <block id="askandwait" type="sensing_askandwait">
-                <value name="QUESTION">
-                    <shadow type="text">
-                        <field name="TEXT">${name}</field>
-                    </shadow>
-                </value>
-            </block>
-        `}
-        <block id="answer" type="sensing_answer"/>
-        ${blockSeparator}
         <block type="sensing_keypressed">
             <value name="KEY_OPTION">
                 <shadow type="sensing_keyoptions"/>
