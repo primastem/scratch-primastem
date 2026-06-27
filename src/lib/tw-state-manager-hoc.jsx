@@ -365,6 +365,15 @@ const TWStateManager = function (WrappedComponent) {
                 this.props.vm.extensionManager.loadExtensionURL(extension);
             }
 
+            // PrimaSTEM: always auto-load the bundled same-origin robot extension so the
+            // robot blocks and the menu-bar "Connect robot" button are present immediately,
+            // without the user having to pick it from the gallery. Same-origin /primastem.js
+            // is trusted in tw-security-manager, so it loads unsandboxed without a warning.
+            if (typeof location !== 'undefined' &&
+                !this.props.vm.extensionManager.isExtensionLoaded('primastem')) {
+                this.props.vm.extensionManager.loadExtensionURL(`${location.origin}/primastem.js`);
+            }
+
             const routerCallbacks = {
                 onSetProjectId: this.onSetProjectId,
                 onSetIsPlayerOnly: this.onSetIsPlayerOnly,
