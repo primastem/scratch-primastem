@@ -33,7 +33,8 @@ import ChangeUsername from '../../containers/tw-change-username.jsx';
 import CloudVariablesToggler from '../../containers/tw-cloud-toggler.jsx';
 import TWSaveStatus from './tw-save-status.jsx';
 import PrimastemConnect from './primastem-connect.jsx';
-import primastemLogo from './primastem-logo-dark.svg';
+import primastemLogoDark from './primastem-logo-dark.svg';
+import primastemLogoLight from './primastem-logo-light.svg';
 import TWNews from './tw-news.jsx';
 
 import {openTipsLibrary, openSettingsModal, openRestorePointModal} from '../../reducers/modals';
@@ -500,7 +501,8 @@ class MenuBar extends React.Component {
                     title="PrimaSTEM"
                 >
                     <img
-                        src={primastemLogo}
+                        src={this.props.theme && this.props.theme.isDark() ?
+                            primastemLogoDark : primastemLogoLight}
                         alt="PrimaSTEM"
                         draggable={false}
                         style={{height: '22px'}}
@@ -1148,6 +1150,7 @@ MenuBar.propTypes = {
     shouldSaveBeforeTransition: PropTypes.func,
     showSaveFilePicker: PropTypes.func,
     showComingSoon: PropTypes.bool,
+    theme: PropTypes.object,
     username: PropTypes.string,
     userOwnsProject: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired
@@ -1181,6 +1184,7 @@ const mapStateToProps = (state, ownProps) => {
         projectTitle: state.scratchGui.projectTitle,
         sessionExists: state.session && typeof state.session.session !== 'undefined',
         settingsMenuOpen: settingsMenuOpen(state),
+        theme: state.scratchGui.theme.theme,
         username: user ? user.username : null,
         userOwnsProject: ownProps.authorUsername && user &&
             (ownProps.authorUsername === user.username),
