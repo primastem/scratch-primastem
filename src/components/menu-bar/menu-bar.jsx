@@ -33,6 +33,7 @@ import ChangeUsername from '../../containers/tw-change-username.jsx';
 import CloudVariablesToggler from '../../containers/tw-cloud-toggler.jsx';
 import TWSaveStatus from './tw-save-status.jsx';
 import PrimastemConnect from './primastem-connect.jsx';
+import primastemLogo from './primastem-logo-dark.svg';
 import TWNews from './tw-news.jsx';
 
 import {openTipsLibrary, openSettingsModal, openRestorePointModal} from '../../reducers/modals';
@@ -491,6 +492,20 @@ class MenuBar extends React.Component {
                     styles.menuBar
                 )}
             >
+                <a
+                    href="https://primastem.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{display: 'flex', alignItems: 'center', padding: '0 14px 0 12px'}}
+                    title="PrimaSTEM"
+                >
+                    <img
+                        src={primastemLogo}
+                        alt="PrimaSTEM"
+                        draggable={false}
+                        style={{height: '22px'}}
+                    />
+                </a>
                 <div className={styles.mainMenu}>
                     <div className={styles.fileGroup}>
                         {this.props.errors.length > 0 && <div>
