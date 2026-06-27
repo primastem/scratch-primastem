@@ -168,6 +168,8 @@ export default class DevTools {
   }
 
   isCostumeEditor() {
+    // PrimaSTEM robot mode removes the Costumes tab, so costTab may be absent.
+    if (!this.costTab) return false;
     return this.costTab.className.indexOf("gui_is-selected") >= 0;
   }
 
@@ -720,8 +722,11 @@ export default class DevTools {
     }
 
     this.codeTab = guiTabs[0];
+    // PrimaSTEM robot mode removes the Costumes/Sounds tabs, so guiTabs[1] may be
+    // undefined. Guard the costume-tab lookups instead of dereferencing blindly.
     this.costTab = guiTabs[1];
-    this.costTabBody = document.querySelector("div[aria-labelledby=" + this.costTab.id + "]");
+    this.costTabBody = this.costTab ?
+      document.querySelector("div[aria-labelledby=" + this.costTab.id + "]") : null;
 
     this.domHelpers.bindOnce(document, "keydown", (...e) => this.eventKeyDown(...e), true);
     this.domHelpers.bindOnce(document, "mousemove", (...e) => this.eventMouseMove(...e), true);

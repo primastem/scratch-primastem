@@ -33,6 +33,7 @@ import ChangeUsername from '../../containers/tw-change-username.jsx';
 import CloudVariablesToggler from '../../containers/tw-cloud-toggler.jsx';
 import TWSaveStatus from './tw-save-status.jsx';
 import PrimastemConnect from './primastem-connect.jsx';
+import Controls from '../../containers/controls.jsx';
 import primastemLogoDark from './primastem-logo-dark.svg';
 import primastemLogoLight from './primastem-logo-light.svg';
 import TWNews from './tw-news.jsx';
@@ -1035,6 +1036,13 @@ class MenuBar extends React.Component {
                     <TWSaveStatus
                         showSaveFilePicker={this.props.showSaveFilePicker}
                     />
+                </div>
+
+                <div
+                    className={classNames(styles.menuBarItem)}
+                    style={{display: 'flex', alignItems: 'center'}}
+                >
+                    <Controls vm={this.props.vm} />
                 </div>
 
                 <PrimastemConnect vm={this.props.vm} />
