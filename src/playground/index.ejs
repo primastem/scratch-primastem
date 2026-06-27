@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google" value="notranslate">
-    <meta name="description" content="<%= htmlWebpackPlugin.options.APP_NAME %> is a Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more." />
+    <meta name="description" content="<%= htmlWebpackPlugin.options.APP_NAME %> Scratch is a block-coding editor for programming the PrimaSTEM robot over Bluetooth." />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="icon" type="image/svg+xml" href="<%= htmlWebpackPlugin.options.root %>primastem-favicon.svg">
     <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.options.root %>primastem-favicon.svg">
@@ -81,7 +81,7 @@
       <div class="splash-screen">
         <div>
           <h1><%= htmlWebpackPlugin.options.APP_NAME %> requires JavaScript</h1>
-          <p>Consider using <a href="https://desktop.turbowarp.org/">TurboWarp Desktop</a> if you are afraid of remote JavaScript.</p>
+          <p>Please enable JavaScript in your browser to use the editor.</p>
         </div>
       </div>
     </noscript>
@@ -89,7 +89,7 @@
     <div class="splash-screen spash-waiting-for-js" hidden>
       <div class="splash-spinner"></div>
 
-      <div class="splash-error-title" hidden>Something went wrong. <a href="https://scratch.mit.edu/users/GarboMuffin/#comments" target="_blank" rel="noreferrer">Please report</a> with the information below.</div>
+      <div class="splash-error-title" hidden>Something went wrong. <a href="https://primastem.com" target="_blank" rel="noreferrer">Please report</a> with the information below.</div>
       <div class="splash-errors" hidden></div>
       <button class="splash-reset" hidden>Click here to reset caches (can fix some errors)</button>
     </div>
