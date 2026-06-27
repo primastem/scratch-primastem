@@ -1,0 +1,2 @@
+# Cloudflare Pages: serve the editor at the site root (skip TurboWarp's player homepage).
+/    /editor.html    200
