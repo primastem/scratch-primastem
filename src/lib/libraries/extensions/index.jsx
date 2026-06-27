@@ -67,7 +67,7 @@ export default [
         insetIconURL: primastemInsetIconURL,
         description: (
             <FormattedMessage
-                defaultMessage="Control the PrimaSTEM robot over Bluetooth. · Управляй роботом PrimaSTEM по Bluetooth."
+                defaultMessage="Control the PrimaSTEM robot over Bluetooth."
                 description="Description for the PrimaSTEM Robot extension"
                 id="primastem.extension.description"
             />
