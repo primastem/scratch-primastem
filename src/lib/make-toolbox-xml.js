@@ -723,6 +723,11 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
     const variablesXML = moveCategory('data') || variables(isInitialSetup, isStage, targetId, colors.data);
     const myBlocksXML = moveCategory('procedures') || myBlocks(isInitialSetup, isStage, targetId, colors.more);
 
+    // PrimaSTEM robot category: pull it out of the extension list so it sits right
+    // after Events (the robot blocks are the primary palette for this editor),
+    // instead of at the very end with the other extension categories.
+    const primastemXML = moveCategory('primastem');
+
     // Always display TurboWarp blocks as the first extension, if it exists,
     // and also add an "is compiled?" block to the top.
     let turbowarpXML = moveCategory('tw');
@@ -736,6 +741,7 @@ const makeToolboxXML = function (isInitialSetup, isStage = true, targetId, categ
     const everything = [
         xmlOpen,
         eventsXML, gap,
+        ...(primastemXML ? [primastemXML, gap] : []),
         controlXML, gap,
         sensingXML, gap,
         operatorsXML, gap,
