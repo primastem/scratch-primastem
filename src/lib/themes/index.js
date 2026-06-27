@@ -22,7 +22,9 @@ const ACCENT_MAP = {
     [ACCENT_RED]: accentRed,
     [ACCENT_RAINBOW]: accentRainbow
 };
-const ACCENT_DEFAULT = ACCENT_RED;
+// PrimaSTEM: default accent is blue (matches the robot/brand look) instead of
+// TurboWarp's red. Users can still switch accents in Settings.
+const ACCENT_DEFAULT = ACCENT_BLUE;
 
 const GUI_LIGHT = 'light';
 const GUI_DARK = 'dark';
