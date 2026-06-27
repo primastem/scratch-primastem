@@ -49,6 +49,9 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
+import primastemIconURL from './primastem/primastem.svg';
+import primastemInsetIconURL from './primastem/primastem-small.svg';
+
 import twIcon from './tw/tw.svg';
 import customExtensionIcon from './custom/custom.svg';
 import returnIcon from './custom/return.svg';
@@ -56,6 +59,23 @@ import galleryIcon from './gallery/gallery.svg';
 import {APP_NAME} from '../../brand';
 
 export default [
+    {
+        name: 'PrimaSTEM Robot',
+        extensionId: 'primastem',
+        extensionURL: `${typeof location === 'undefined' ? '' : location.origin}/primastem.js`,
+        iconURL: primastemIconURL,
+        insetIconURL: primastemInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Control the PrimaSTEM robot over Bluetooth. · Управляй роботом PrimaSTEM по Bluetooth."
+                description="Description for the PrimaSTEM Robot extension"
+                id="primastem.extension.description"
+            />
+        ),
+        tags: ['primastem'],
+        featured: true,
+        helpLink: 'https://github.com/primastem/primastem-blocks'
+    },
     {
         name: (
             <FormattedMessage

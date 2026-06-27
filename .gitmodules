@@ -1,0 +1,3 @@
+[submodule "vendor/primastem-blocks"]
+	path = vendor/primastem-blocks
+	url = https://github.com/primastem/primastem-blocks

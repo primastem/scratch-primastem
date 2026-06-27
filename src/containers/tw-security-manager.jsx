@@ -23,12 +23,26 @@ const manuallyTrustExtension = url => {
  * @param {string} url URL as a string.
  * @returns {boolean} True if the extension can is trusted
  */
+const isOwnPrimastemExtension = url => {
+    try {
+        if (typeof location === 'undefined') return false;
+        const parsed = new URL(url, location.href);
+        return parsed.origin === location.origin && parsed.pathname === '/primastem.js';
+    } catch (e) {
+        return false;
+    }
+};
+
 const isTrustedExtension = url => (
     // Always trust our official extension repostiory.
     url.startsWith('https://extensions.turbowarp.org/') ||
 
     // For development.
     url.startsWith('http://localhost:8000/') ||
+
+    // PrimaSTEM: trust our own same-origin extension file (scratch.primastem.com/primastem.js
+    // and localhost dev). Served from this build's static/, so it is our own trusted code.
+    isOwnPrimastemExtension(url) ||
 
     extensionsTrustedByUser.has(url)
 );
