@@ -1,6 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {injectIntl, intlShape} from 'react-intl';
 import VM from 'scratch-vm';
+
+/**
+ * Self-contained translations for the connect button. Keyed by the language part
+ * of the GUI locale (e.g. "pt-br" -> "pt"). Falls back to English. Kept here rather
+ * than in the scratch-l10n catalogs to avoid touching the upstream message pipeline.
+ */
+const STRINGS = {
+    connect: {
+        en: 'Connect robot', ru: 'Подключить робота', fr: 'Connecter le robot',
+        de: 'Roboter verbinden', es: 'Conectar robot', it: 'Collega robot',
+        pt: 'Conectar robô', nl: 'Robot verbinden', pl: 'Połącz robota',
+        uk: 'Підключити робота'
+    },
+    connected: {
+        en: 'Robot', ru: 'Робот', fr: 'Robot', de: 'Roboter', es: 'Robot',
+        it: 'Robot', pt: 'Robô', nl: 'Robot', pl: 'Robot', uk: 'Робот'
+    },
+    titleConnect: {
+        en: 'PrimaSTEM: connect robot', ru: 'PrimaSTEM: подключить робота',
+        fr: 'PrimaSTEM : connecter le robot', de: 'PrimaSTEM: Roboter verbinden',
+        es: 'PrimaSTEM: conectar robot', it: 'PrimaSTEM: collega robot',
+        pt: 'PrimaSTEM: conectar robô', nl: 'PrimaSTEM: robot verbinden',
+        pl: 'PrimaSTEM: połącz robota', uk: 'PrimaSTEM: підключити робота'
+    },
+    titleConnected: {
+        en: 'PrimaSTEM: connected (click to disconnect)',
+        ru: 'PrimaSTEM: подключён (нажмите, чтобы отключить)',
+        fr: 'PrimaSTEM : connecté (cliquez pour déconnecter)',
+        de: 'PrimaSTEM: verbunden (zum Trennen klicken)',
+        es: 'PrimaSTEM: conectado (clic para desconectar)',
+        it: 'PrimaSTEM: connesso (clic per disconnettere)',
+        pt: 'PrimaSTEM: conectado (clique para desconectar)',
+        nl: 'PrimaSTEM: verbonden (klik om te verbreken)',
+        pl: 'PrimaSTEM: połączono (kliknij, aby rozłączyć)',
+        uk: 'PrimaSTEM: підключено (натисніть, щоб відключити)'
+    }
+};
+
+const tr = (key, locale) => {
+    const lang = (locale || 'en').toLowerCase().split('-')[0];
+    const table = STRINGS[key];
+    return table[lang] || table.en;
+};
 
 /**
  * Menu-bar button to connect/disconnect the PrimaSTEM robot.
@@ -57,6 +101,7 @@ class PrimastemConnect extends React.Component {
     render () {
         if (!this.state.loaded) return null;
         const connected = this.state.connected;
+        const locale = this.props.intl && this.props.intl.locale;
         const wrap = {
             display: 'flex',
             alignItems: 'center',
@@ -80,21 +125,22 @@ class PrimastemConnect extends React.Component {
         return (
             <div
                 style={wrap}
-                title={connected ? 'PrimaSTEM: connected (click to disconnect)' : 'PrimaSTEM: connect robot'}
+                title={connected ? tr('titleConnected', locale) : tr('titleConnect', locale)}
                 onMouseEnter={() => this.setState({hover: true})}
                 onMouseLeave={() => this.setState({hover: false})}
                 onClick={this.handleClick}
             >
                 <span role="img" aria-label="robot">{'🤖'}</span>
                 <span style={dot} />
-                <span>{connected ? 'Robot' : 'Connect robot'}</span>
+                <span>{connected ? tr('connected', locale) : tr('connect', locale)}</span>
             </div>
         );
     }
 }
 
 PrimastemConnect.propTypes = {
+    intl: intlShape,
     vm: PropTypes.instanceOf(VM).isRequired
 };
 
-export default PrimastemConnect;
+export default injectIntl(PrimastemConnect);
