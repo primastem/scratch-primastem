@@ -1,10 +1,50 @@
-scratch-gui modified for use in [TurboWarp](https://turbowarp.org/)
+# PrimaSTEM Scratch
 
-## Setup
+**English** · [Русский](#русский)
 
-See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp environment.
+A block-coding editor for the physical **PrimaSTEM** robot, deployed at **[scratch.primastem.com](https://scratch.primastem.com)**. A fork of [TurboWarp/scratch-gui](https://github.com/TurboWarp/scratch-gui), stripped down to robot coding and branded for PrimaSTEM.
 
-If you just want to play with the GUI then it's the same process as upstream scratch-gui.
+- **Robot blocks built in.** The [PrimaSTEM Robot extension](https://github.com/primastem/primastem-blocks) (`primastem.js`) is bundled as a git submodule (`vendor/primastem-blocks`) and auto-loads in the editor — connect over Web Bluetooth, then drive / turn / LED / sound. No "Add extension" step, no install.
+- **Robot-focused UI.** Animation-only Scratch (stage, sprites, costumes, sounds, and the Motion / Looks / Sound blocks) is removed. The palette is Events → PrimaSTEM Robot → Control → Sensing → Operators → Variables → My Blocks; the green flag / stop controls sit in the menu bar.
+- **Localized.** The UI and the robot blocks follow the editor language.
+
+## Development
+
+```bash
+git clone --recurse-submodules https://github.com/primastem/scratch-primastem
+cd scratch-primastem
+npm install
+npm start        # editor at http://localhost:8601/editor.html
+npm run build    # production build -> build/
+```
+
+`primastem.js` is synced from the `vendor/primastem-blocks` submodule into `static/` on prestart/prebuild. Deployed as a Cloudflare Worker — pushing to `develop` triggers an auto-rebuild. For the full scratch-gui toolchain see the upstream [TurboWarp dev docs](https://docs.turbowarp.org/development/getting-started).
+
+---
+
+# Русский
+
+[English](#primastem-scratch) · **Русский**
+
+Редактор блочного программирования для физического робота **PrimaSTEM**, развёрнут на **[scratch.primastem.com](https://scratch.primastem.com)**. Форк [TurboWarp/scratch-gui](https://github.com/TurboWarp/scratch-gui), урезанный до робот-кодинга и брендированный под PrimaSTEM.
+
+- **Блоки робота встроены.** [Расширение PrimaSTEM Robot](https://github.com/primastem/primastem-blocks) (`primastem.js`) подключено git-сабмодулем (`vendor/primastem-blocks`) и автозагружается в редакторе — подключение по Web Bluetooth, затем ехать / повернуть / LED / звук. Без шага «Добавить расширение», без установки.
+- **Интерфейс под робота.** Анимационный Scratch (сцена, спрайты, костюмы, звуки, блоки Motion / Looks / Sound) убран. Палитра: События → PrimaSTEM Robot → Управление → Сенсоры → Операторы → Переменные → Мои блоки; зелёный флаг / стоп — в панели меню.
+- **Локализация.** Интерфейс и блоки робота следуют языку редактора.
+
+## Разработка
+
+```bash
+git clone --recurse-submodules https://github.com/primastem/scratch-primastem
+cd scratch-primastem
+npm install
+npm start        # редактор на http://localhost:8601/editor.html
+npm run build    # продакшн-сборка -> build/
+```
+
+`primastem.js` синкается из сабмодуля `vendor/primastem-blocks` в `static/` на prestart/prebuild. Развёрнут как Cloudflare Worker — пуш в `develop` запускает авто-пересборку. Полный тулчейн scratch-gui — в [dev-доках TurboWarp](https://docs.turbowarp.org/development/getting-started).
+
+---
 
 ## License
 
