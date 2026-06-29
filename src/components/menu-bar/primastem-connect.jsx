@@ -130,7 +130,7 @@ class PrimastemConnect extends React.Component {
                 onMouseLeave={() => this.setState({hover: false})}
                 onClick={this.handleClick}
             >
-                <span role="img" aria-label="robot">{'🤖'}</span>
+                <span role="img" aria-label="ladybug">{'🐞'}</span>
                 <span style={dot} />
                 <span>{connected ? tr('connected', locale) : tr('connect', locale)}</span>
             </div>
