@@ -57,9 +57,12 @@
 }
 
 .tab-list {
+    /* PrimaSTEM: only the "Code" tab remains (Costumes/Sounds removed) and the
+       find-bar addon used to sit in this row too — hide the whole 44px row to
+       reclaim vertical space; the blocks panel grows into it. */
+    display: none;
     height: $stage-menu-height;
     width: 250px; /* Match width of the toolbox */
-    display: flex;
     align-items: flex-end;
     flex-shrink: 0;
 
