@@ -250,11 +250,12 @@ class Interface extends React.Component {
                         width: `${Math.max(480, props.customStageSize.width) + 2}px`
                     }) : null}
                 >
+                    {/* PrimaSTEM: Backpack (cross-project block storage) is hidden —
+                      unneeded clutter for the simple robot editor. Re-add
+                      backpackVisible + backpackHost="_local_" to restore it. */}
                     <GUI
                         onClickAddonSettings={handleClickAddonSettings}
                         onUpdateProjectTitle={this.handleUpdateProjectTitle}
-                        backpackVisible
-                        backpackHost="_local_"
                         {...props}
                     />
                     {isHomepage ? (
