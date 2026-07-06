@@ -32,3 +32,10 @@ static/primastem.js
 
 # Local-only internal notes (never publish)
 *.local.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
