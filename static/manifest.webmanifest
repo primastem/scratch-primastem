@@ -1,21 +1,29 @@
 {
-  "short_name": "TurboWarp",
-  "name": "TurboWarp",
-  "description": "Mod of Scratch 3 with a compiler, dark mode, and more features.",
+  "short_name": "PrimaSTEM",
+  "name": "PrimaSTEM Scratch",
+  "description": "Block-coding editor for the PrimaSTEM robot over Bluetooth.",
   "icons": [
     {
       "src": "images/192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "images/512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "primastem-icon-maskable.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "editor",
-  "background_color": "#333333",
+  "background_color": "#1f8fff",
   "display": "standalone",
-  "theme_color": "#333333"
+  "theme_color": "#4c97ff"
 }
